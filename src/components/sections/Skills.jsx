@@ -9,7 +9,6 @@ const categoryColors = {
   'Backend': '#b65a2d',
   'Database': '#e89565',
   'Language': '#c2a370',
-  'Automation': '#a67b5b',
   '3D / WebGL': '#8c421e',
   'Cloud': '#d4a373',
 };

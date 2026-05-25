@@ -307,26 +307,47 @@ export default function Hero({ mouse, scrollProgress }) {
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            <button
-              onClick={() => setShowResumeModal(false)}
-              style={{
-                position: 'absolute',
-                top: '16px',
-                right: '24px',
-                background: 'var(--accent)',
-                color: '#fff',
-                border: 'none',
-                padding: '8px 16px',
-                borderRadius: '9999px',
-                fontSize: '14px',
-                fontWeight: 600,
-                cursor: 'pointer',
-                zIndex: 10,
-                boxShadow: '0 4px 12px var(--accent-glow)',
-              }}
-            >
-              Close
-            </button>
+            <div style={{ position: 'absolute', top: '16px', right: '24px', display: 'flex', gap: '12px', zIndex: 10 }}>
+              <a
+                href="/resume.pdf"
+                download
+                style={{
+                  background: 'var(--glass-bg)',
+                  backdropFilter: 'blur(10px)',
+                  color: 'var(--color-text-primary)',
+                  border: '1px solid var(--color-border)',
+                  padding: '8px 16px',
+                  borderRadius: '9999px',
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  textDecoration: 'none',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  transition: 'all 0.2s',
+                }}
+                onMouseOver={(e) => e.currentTarget.style.borderColor = 'var(--accent)'}
+                onMouseOut={(e) => e.currentTarget.style.borderColor = 'var(--color-border)'}
+              >
+                <Download size={14} /> Download
+              </a>
+              <button
+                onClick={() => setShowResumeModal(false)}
+                style={{
+                  background: 'var(--accent)',
+                  color: '#fff',
+                  border: 'none',
+                  padding: '8px 16px',
+                  borderRadius: '9999px',
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  boxShadow: '0 4px 12px var(--accent-glow)',
+                }}
+              >
+                Close
+              </button>
+            </div>
             <iframe
               src="/resume.pdf"
               style={{ width: '100%', height: '100%', border: 'none' }}

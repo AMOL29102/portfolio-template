@@ -38,63 +38,96 @@ export default function Experience() {
         </h2>
       </motion.div>
 
-      {/* Experience List - Clean Minimalist Vertical Stack */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '30px', marginBottom: '80px' }}>
+      {/* Experience Timeline - Glowing Cards with Connection Line */}
+      <div style={{ position: 'relative', paddingLeft: '40px', marginBottom: '80px', display: 'flex', flexDirection: 'column', gap: '40px' }}>
+        {/* Timeline Line */}
+        <div style={{ position: 'absolute', left: '0px', top: '0', bottom: '0', width: '2px', background: 'linear-gradient(to bottom, var(--accent) 0%, var(--accent-glow) 50%, transparent 100%)', opacity: 0.5 }} />
+
         {experience.map((entry, index) => (
           <motion.div
             key={entry.company}
             {...fadeUp(index * 0.1)}
-            className="glass"
-            style={{
-              padding: '40px',
-              borderRadius: '16px',
-              position: 'relative',
-              overflow: 'hidden',
-              borderLeft: '4px solid var(--accent)'
-            }}
+            style={{ position: 'relative' }}
           >
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-start', gap: '20px', marginBottom: '20px' }}>
-              <div>
-                <h3 style={{ fontSize: '24px', fontWeight: 700, fontFamily: 'Space Grotesk, system-ui, sans-serif', color: 'var(--color-text-primary)', marginBottom: '8px' }}>
-                  {entry.title} <span style={{ color: 'var(--accent)' }}>@ {entry.company}</span>
-                </h3>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
-                  <span style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '14px', color: 'var(--color-text-muted)' }}>
-                    <Calendar size={14} /> {entry.period}
-                  </span>
-                  <span style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '14px', color: 'var(--color-text-muted)' }}>
-                    <MapPin size={14} /> {entry.location}
-                  </span>
+            {/* Timeline Dot */}
+            <div style={{
+              position: 'absolute',
+              left: '-39px',
+              top: '40px',
+              width: '20px',
+              height: '20px',
+              borderRadius: '50%',
+              background: 'var(--color-bg-primary)',
+              border: '3px solid var(--accent)',
+              boxShadow: '0 0 12px var(--accent-glow)',
+              zIndex: 2,
+              transform: 'translate(-50%, -50%)'
+            }} />
+
+            <div
+              className="glass"
+              style={{
+                padding: '40px',
+                borderRadius: '16px',
+                position: 'relative',
+                overflow: 'hidden',
+                border: '1px solid var(--color-border)',
+                transition: 'all 0.3s ease',
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = 'translateY(-5px) scale(1.01)';
+                e.currentTarget.style.boxShadow = '0 15px 40px var(--accent-glow)';
+                e.currentTarget.style.borderColor = 'var(--accent)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = 'none';
+                e.currentTarget.style.boxShadow = 'none';
+                e.currentTarget.style.borderColor = 'var(--color-border)';
+              }}
+            >
+              <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-start', gap: '20px', marginBottom: '20px' }}>
+                <div>
+                  <h3 style={{ fontSize: '24px', fontWeight: 700, fontFamily: 'Space Grotesk, system-ui, sans-serif', color: 'var(--color-text-primary)', marginBottom: '8px' }}>
+                    {entry.title} <span style={{ color: 'var(--accent)' }}>@ {entry.company}</span>
+                  </h3>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '14px', color: 'var(--color-text-muted)' }}>
+                      <Calendar size={14} /> {entry.period}
+                    </span>
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '14px', color: 'var(--color-text-muted)' }}>
+                      <MapPin size={14} /> {entry.location}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <p style={{ fontSize: '15px', lineHeight: 1.7, color: 'var(--color-text-secondary)', marginBottom: '20px' }}>
-              {entry.description}
-            </p>
+              <p style={{ fontSize: '15px', lineHeight: 1.7, color: 'var(--color-text-secondary)', marginBottom: '20px' }}>
+                {entry.description}
+              </p>
 
-            {entry.bullets && (
-              <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px', margin: '0 0 24px 0', padding: '0', listStyle: 'none' }}>
-                {entry.bullets.map((b, i) => (
-                  <li key={i} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', fontSize: '14px', color: 'var(--color-text-secondary)', lineHeight: 1.6 }}>
-                    <CheckCircle2 size={16} style={{ color: 'var(--accent)', flexShrink: 0, marginTop: '2px' }} />
-                    {b}
-                  </li>
+              {entry.bullets && (
+                <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px', margin: '0 0 24px 0', padding: '0', listStyle: 'none' }}>
+                  {entry.bullets.map((b, i) => (
+                    <li key={i} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', fontSize: '14px', color: 'var(--color-text-secondary)', lineHeight: 1.6 }}>
+                      <CheckCircle2 size={16} style={{ color: 'var(--accent)', flexShrink: 0, marginTop: '2px' }} />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {/* Tech Stack Tags */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                {entry.tags.map((tag) => (
+                  <span key={tag} style={{
+                    fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em',
+                    padding: '6px 14px', borderRadius: '6px',
+                    background: 'var(--glass-heavy-bg)', color: 'var(--color-text-primary)'
+                  }}>
+                    {tag}
+                  </span>
                 ))}
-              </ul>
-            )}
-
-            {/* Tech Stack Tags */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-              {entry.tags.map((tag) => (
-                <span key={tag} style={{
-                  fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em',
-                  padding: '6px 14px', borderRadius: '6px',
-                  background: 'var(--glass-heavy-bg)', color: 'var(--color-text-primary)'
-                }}>
-                  {tag}
-                </span>
-              ))}
+              </div>
             </div>
           </motion.div>
         ))}

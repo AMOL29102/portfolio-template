@@ -5,7 +5,7 @@ export const personalInfo = {
   location: 'Pune, India',
   tagline: 'I build interactive 3D web experiences, robust backend systems, and premium user interfaces.',
   email: 'amolpatilap2910@gmail.com',
-  bio: 'I am a Software Developer based in Pune, specializing in the MERN stack. My passion lies in combining deep technical knowledge in languages like C++, Java, and Python with modern web technologies like React and Vite to create seamless, high-performance applications. I also have hands-on experience in blockchain technology and enterprise automation.',
+  bio: 'I am a Software Developer based in Pune, specializing in the MERN stack. My passion lies in combining deep technical knowledge in languages like C++, Java, and Python with modern web technologies like React and Vite to create seamless, high-performance applications. I also have hands-on experience in blockchain technology.',
   photo: '/images/photo.jpg', // user photo
   social: {
     github: 'https://github.com/AMOL29102',
@@ -59,7 +59,6 @@ export const skills = [
   { name: 'C++', category: 'Language', icon: '⚙️', level: 85 },
   { name: 'SQL', category: 'Database', icon: '🗃️', level: 75 },
   { name: 'AWS (S3, EC2)', category: 'Cloud', icon: '☁️', level: 70 },
-  { name: 'RPA (Robocorp)', category: 'Automation', icon: '🤖', level: 75 },
   { name: 'Three.js / R3F', category: '3D / WebGL', icon: '🔮', level: 70 },
 ];
 
@@ -140,7 +139,7 @@ export const projects = [
     tags: ['React', 'Tailwind CSS', 'Node.js', 'Express'],
     image: '/images/portfolio2.png',
     source: 'https://github.com/AMOL29102',
-    demo: '#',
+    demo: 'https://patilamol-portfolio.vercel.app/',
   },
 ];
 
