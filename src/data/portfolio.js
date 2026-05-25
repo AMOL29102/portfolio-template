@@ -113,7 +113,7 @@ export const projects = [
     tags: ['Blockchain', 'Solidity', 'React', 'Node.js', 'QR Code', 'Web3'],
     image: '/images/Project2.jpg',
     source: 'https://github.com/AMOL29102',
-    demo: null,
+    demo: 'https://fake-product-identification-tan.vercel.app/',
   },
   {
     title: 'RescueBites',
@@ -122,7 +122,7 @@ export const projects = [
     tags: ['React', 'Node.js', 'MongoDB', 'Express', 'Tailwind'],
     image: '/images/Project3.png',
     source: 'https://github.com/AMOL29102',
-    demo: null,
+    demo: 'https://rescuebite-sigma.vercel.app/',
   },
   {
     title: 'Portfolio 01',
