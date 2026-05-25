@@ -48,7 +48,7 @@ app.post('/api/contact', async (req, res) => {
 
     const mailOptions = {
       from: `"${name}" <${process.env.EMAIL_USER}>`, 
-      to: process.env.RECEIVER_EMAIL || process.env.EMAIL_USER, 
+      to: process.env.EMAIL_USER, 
       replyTo: email, 
       subject: `Portfolio Contact: Message from ${name}`,
       text: `You have received a new contact submission from your portfolio website.\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
